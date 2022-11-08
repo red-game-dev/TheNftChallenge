@@ -1,35 +1,40 @@
 import "tailwindcss/tailwind.css";
 
-import {
-  RecoilRoot
-} from "recoil";
-import { GlobalStyles } from "twin.macro";
+import { RecoilRoot } from "recoil";
+import { createGlobalStyle } from "styled-components";
+import tw, { theme, GlobalStyles as BaseStyles } from "twin.macro";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
+
+const CustomStyles = createGlobalStyle({
+  body: {
+    WebkitTapHighlightColor: theme`colors.black`,
+    backgroundColor: "#121212",
+    ...tw`antialiased`,
+  },
+});
+
+const GlobalStyles = () => (
+  <>
+    <BaseStyles />
+    <CustomStyles />
+  </>
+);
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Redeemer Pace - Resume</title>
+        <title>The NFT Challenge</title>
 
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic"
-          rel="stylesheet"
-        />
-
-        <link rel="stylesheet" href="css/basic.css" />
-        <link rel="stylesheet" href="css/layout.css" />
-        <link rel="stylesheet" href="css/magnific-popup.css" />
-        <link rel="stylesheet" href="css/jarallax.css" />
-        <link rel="stylesheet" href="css/fontawesome.css" />
-        <link rel="stylesheet" href="css/brands.css" />
-        <link rel="stylesheet" href="css/solid.css" />
         <link rel="shortcut icon" href="images/favicons/favicon.ico" />
       </Head>
       <GlobalStyles />
       <RecoilRoot>
+
+        <Script src="https://kit.fontawesome.com/54dc1ed9f3.js" crossOrigin="anonymous" />
         <Component {...pageProps} />
       </RecoilRoot>
     </>
