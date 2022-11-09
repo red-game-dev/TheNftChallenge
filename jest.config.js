@@ -13,7 +13,7 @@ const createJestConfig = nextJest({ dir: './' })
 // Any custom config you want to pass to Jest
 const customJestConfig = {
   preset: 'ts-jest',
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|js?|tsx?|ts?)$',
+  testRegex: '(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|js?|tsx?|ts?)$',
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
   },
@@ -21,7 +21,7 @@ const customJestConfig = {
   // on node 14.x coverage provider v8 offers good speed and more or less good report
   coverageProvider: 'v8',
   collectCoverageFrom: [
-    '<rootDir>/__tests__/src/**/*.test.{js,jsx,ts,tsx}',
+    '<rootDir>/tests/**/*.test.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**',
     '!<rootDir>/out/**',
@@ -34,16 +34,16 @@ const customJestConfig = {
       "<rootDir>/node_modules/",
       "<rootDir>/cypress/",
       "<rootDir>/webdriverio/",
-      "<rootDir>/__tests__/__mocks__/",
-      "<rootDir>/__tests__/setups/",
+      "<rootDir>/tests/__mocks__/",
+      "<rootDir>/tests/setups/",
   ],
   moduleNameMapper: {
       ...pathsToModuleNameMapper(paths, { prefix: "<rootDir>/" }),
       "\\.(scss|sass|css)$": "identity-obj-proxy",
-      '\\.(jpg|jpeg|png|gif|svg)$': ['<rootDir>/__tests__/__mocks__/fileMock.js'],
+      '\\.(jpg|jpeg|png|gif|svg)$': ['<rootDir>/tests/__mocks__/fileMock.js'],
   },
   moduleDirectories: ['node_modules', '<rootDir>/'],
-  setupFilesAfterEnv: ['<rootDir>/__tests__/setups/jest.setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/tests/setups/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
 }
 
