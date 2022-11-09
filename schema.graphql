@@ -1,0 +1,39 @@
+type AzraelCollateralClaimed @entity {
+  id: ID!
+  lendingId: BigInt! # uint256
+  claimedAt: BigInt! # uint32
+}
+
+type AzraelLendingStopped @entity {
+  id: ID!
+  lendingId: BigInt! # uint256
+  stoppedAt: BigInt! # uint32
+}
+
+type AzraelLent @entity {
+  id: ID!
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+  lentAmount: Int! # uint8
+  lendingId: BigInt! # uint256
+  lenderAddress: Bytes! # address
+  maxRentDuration: Int! # uint8
+  dailyRentPrice: Bytes! # bytes4
+  nftPrice: Bytes! # bytes4
+  isERC721: Boolean! # bool
+  paymentToken: Int! # uint8
+}
+
+type AzraelRented @entity {
+  id: ID!
+  lendingId: BigInt! # uint256
+  renterAddress: Bytes! # address
+  rentDuration: Int! # uint8
+  rentedAt: BigInt! # uint32
+}
+
+type AzraelReturned @entity {
+  id: ID!
+  lendingId: BigInt! # uint256
+  returnedAt: BigInt! # uint32
+}
