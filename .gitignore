@@ -26,7 +26,10 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
+.env
 .env*.local
+.env.*
+!.evn.test
 
 # vercel
 .vercel
@@ -38,4 +41,4 @@ node_modules
 
 /__tests__/src/pages/__snapshots__
 
-.env
+generated/*
