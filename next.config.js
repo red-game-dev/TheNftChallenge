@@ -14,5 +14,11 @@ module.exports = {
     removeConsole: {
       exclude: ['error'],
     },
-  }
-}
+  },
+  env: {
+    SUBGRAPH_AZRAEL_URL: process.env.SUBGRAPH_AZRAEL_URL,
+  },
+  images: {
+    domains: ['res.cloudinary.com', 'nft-cdn.alchemy.com', 'ipfs.io'],
+  },
+};
