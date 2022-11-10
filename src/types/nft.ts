@@ -1,7 +1,14 @@
 import { Nft } from "alchemy-sdk";
 
+export const enum NftEntityType {
+  LENDING = "lending",
+  RENTING = "renting"
+}
+
 export interface Lending {
+  __typename?: "Lending";
   id: string;
+  type?: NftEntityType;
   collateralClaimed: boolean;
   cursor: number;
   dailyRentPrice: string;
@@ -17,6 +24,8 @@ export interface Lending {
 }
 
 export interface Renting {
+  __typename?: "Renting";
+  type?: NftEntityType;
   id: string;
   cursor: number;
   rentDuration: string;
