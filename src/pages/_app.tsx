@@ -8,6 +8,10 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
 
+import { ReactQueryClient, QueryClientProvider } from "@/setups/graphql";
+
+const queryClient = new ReactQueryClient();
+
 const CustomStyles = createGlobalStyle({
   body: {
     WebkitTapHighlightColor: theme`colors.black`,
@@ -32,11 +36,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="images/favicons/favicon.ico" />
       </Head>
       <GlobalStyles />
-      <RecoilRoot>
 
-        <Script src="https://kit.fontawesome.com/54dc1ed9f3.js" crossOrigin="anonymous" />
-        <Component {...pageProps} />
-      </RecoilRoot>
+      <Script src="https://kit.fontawesome.com/54dc1ed9f3.js" crossOrigin="anonymous" />
+      <QueryClientProvider client={queryClient}>
+        <RecoilRoot>
+          <Component {...pageProps} />
+        </RecoilRoot>
+      </QueryClientProvider>
     </>
   );
 }
