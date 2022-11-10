@@ -29,7 +29,7 @@ yarn-error.log*
 .env
 .env*.local
 .env.*
-!.evn.test
+!.env.example
 
 # vercel
 .vercel
@@ -42,3 +42,5 @@ node_modules
 /__tests__/src/pages/__snapshots__
 
 generated/*
+
+tests/*.latest.json
