@@ -9,16 +9,19 @@ module.exports = {
     './src/layouts/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {
-      height: {
-        'endless-width': '1000%',
-      },
-    },
+    border: {
+      'b-dashed': 'border-bottom-style: dashed'
+    }
   },
   plugins: [
-    plugin(function ({ addVariant }) {
+    plugin(function ({ addVariant, addUtilities, variants }) {
       addVariant('child', '& > *');
       addVariant('child-hover', '& > *:hover');
+      addUtilities([{
+        '.border-b-dashed': {
+          'border-bottom-style': 'dashed'
+        }
+      }], variants('borderStyle'))
     }),
   ]
 }
