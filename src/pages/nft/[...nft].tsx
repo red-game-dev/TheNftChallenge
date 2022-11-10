@@ -3,6 +3,7 @@ import React from "react";
 import { GetServerSidePropsContext } from "next";
 
 import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { AppProps } from "next/app";
 
 import { getAzrealRawNfts } from "@/api/getAzrealRawNfts";
 import { AttributeList } from "@/components/Attributes";
@@ -16,9 +17,9 @@ import { useGetNfts } from "@/hooks/nfts/useGetNfts";
 import { useNftAttributes } from "@/hooks/nfts/useNftAttributes";
 import { useNftTags } from "@/hooks/nfts/useNftTags";
 import Layout from "@/layouts/Layout";
-import { ReadableNftItem } from "@/types/nft";
+import { AzrealNFTS, ReadableNftItem } from "@/types/nft";
 
-interface NftPageProps {
+interface NftPageProps extends AppProps {
   nftAddress: string;
   tokenId: string;
 }
@@ -81,7 +82,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const [nftAddress, tokenId] = query?.nft || [];
 
   if (nftAddress && tokenId) {
-    queryClient.prefetchQuery([`nft-${nftAddress}-${tokenId}`], () => getAzrealRawNfts(nftAddress, tokenId, 1));
+    queryClient.prefetchQuery([`nft-${nftAddress}-${tokenId}`], () => getAzrealRawNfts<AzrealNFTS>(nftAddress, tokenId, 1));
   }
 
   return {

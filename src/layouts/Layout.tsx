@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { FC, Fragment, ReactNode } from "react";
 
 import tw from "twin.macro";
 
@@ -9,8 +9,12 @@ const Container = tw.div`relative m-0 overflow-hidden before:z-[12] before:point
 
 const Wrapper = tw.div`relative m-auto my-12`;
 
+interface LayoutProps {
+  title: string;
+  children: ReactNode;
+}
 
-const Layout = ({ title, children }: any) => (
+const Layout: FC<LayoutProps> = ({ title, children }: LayoutProps) => (
     <Fragment>
       <Container>
         <Header title={title} />

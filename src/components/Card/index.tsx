@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 
 import tw, { styled } from "twin.macro";
 
@@ -60,7 +60,7 @@ interface NftCardProps extends ReadableNftItem {
   canView?: boolean;
 }
 
-export const NFT = ({
+export const NFT: FC<NftCardProps> = ({
   id, title, description,
   nftPrice, paymentTokenName,
   collateralClaimed = false,

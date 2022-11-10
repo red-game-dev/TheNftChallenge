@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import tw, { css, styled } from "twin.macro";
 
 import Link from "next/link";
@@ -25,7 +27,7 @@ const SocialMediaItem = styled(Link)(() => [
 ]);
 
 
-const Footer = () => (
+const Footer: FC = () => (
     <FooterContainer>
       <SocialMediaList>
         <FollowMeButton>Follow Me</FollowMeButton>

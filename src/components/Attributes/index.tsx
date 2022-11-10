@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import tw from "twin.macro";
 
 const AttributesContainer = tw.div`w-full flex flex-row flex-wrap justify-center items-center`;
@@ -10,7 +12,7 @@ interface AttributeListItemProps {
   description?: string;
 }
 
-const AttributeListItem = ({ title, description }: AttributeListItemProps) => (
+const AttributeListItem: FC<AttributeListItemProps> = ({ title, description }: AttributeListItemProps) => (
   <AttributeItem>
     <AttributeTitle>{title}</AttributeTitle>
     {
@@ -23,7 +25,7 @@ interface AttributeListProps {
   attributes: AttributeListItemProps[];
 }
 
-export const AttributeList = ({ attributes }: AttributeListProps) => (
+export const AttributeList: FC<AttributeListProps> = ({ attributes }: AttributeListProps) => (
     <AttributesContainer>
       {
         attributes.map((attribute, index) => <AttributeListItem

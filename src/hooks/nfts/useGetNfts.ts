@@ -14,7 +14,7 @@ interface UseGetNftsHookProps {
 
 export const useGetNfts = ({ nftAddress, tokenId, limit }: UseGetNftsHookProps) => {
   const { data: nftsData = {} as QueryData<AzrealNFTS>, error, isLoading } =
-  useQuery<any, any, QueryData<AzrealNFTS>>(["nfts"], () => getAzrealRawNfts(nftAddress, tokenId, limit));
+  useQuery<any, any, QueryData<AzrealNFTS>>(["nfts"], () => getAzrealRawNfts<AzrealNFTS>(nftAddress, tokenId, limit));
   const { data: { lendings = [] as Lending[], rentings = [] as Renting[] } = {} as AzrealNFTS} = nftsData || {} as QueryData<AzrealNFTS>;
   const list = [...lendings, ...rentings];
 

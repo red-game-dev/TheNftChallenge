@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import tw from "twin.macro";
 
 const ErrorContainer = tw.div`bg-red-50 border-l-8 border-red-700 mb-2`;
@@ -9,7 +11,7 @@ interface ErrorDetailProps {
   text: string;
 }
 
-export const ErrorDetail = ({ text }: ErrorDetailProps) => (
+export const ErrorDetail: FC<ErrorDetailProps> = ({ text }: ErrorDetailProps) => (
   <ErrorContainer>
       <ErrorCotent>
         <Icon className="fa-duotone fa-circle-xmark" />

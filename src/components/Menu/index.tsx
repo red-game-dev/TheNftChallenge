@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import tw, { css, styled } from "twin.macro";
 
 import Link from "next/link";
@@ -70,7 +72,7 @@ const MenuItem = styled(Link)(({ selected = false }: MenuItemArgs) => [
   `
 ]);
 
-export const Menu = ({ active }: MenuArgs) => (
+export const Menu: FC<MenuArgs> = ({ active }: MenuArgs) => (
   <>
     <MenuButton active={active} className="menu-btn" />
     <MenuContainer active={active}>

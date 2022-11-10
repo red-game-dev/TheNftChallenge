@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import tw from "twin.macro";
 
 const TagContainer = tw.div`w-full flex flex-row flex-wrap justify-center items-center`;
@@ -8,7 +10,7 @@ interface TagsListProps {
   tags: string[];
 }
 
-export const TagsList = ({ tags = [] }: TagsListProps) => (
+export const TagsList: FC<TagsListProps> = ({ tags = [] }: TagsListProps) => (
   <TagContainer>
     {
       tags.map((tag, index) => (

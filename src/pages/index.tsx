@@ -12,6 +12,7 @@ import { Loader } from "@/components/Loader";
 import { Title } from "@/components/Title";
 import { useGetNfts } from "@/hooks/nfts/useGetNfts";
 import Layout from "@/layouts/Layout";
+import { AzrealNFTS } from "@/types/nft";
 
 const NftList = styled.ul(() => [
   tw`flex flex-row flex flex-wrap -mx-4 list-none`
@@ -61,7 +62,7 @@ export default function Home() {
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
-  queryClient.prefetchQuery(["nfts"], () => getAzrealRawNfts());
+  queryClient.prefetchQuery(["nfts"], () => getAzrealRawNfts<AzrealNFTS>());
 
 return {
     props: {

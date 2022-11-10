@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 
 import tw, { css, styled } from "twin.macro";
 
@@ -59,7 +59,7 @@ const LogoContents = styled.div(() => [
   `
 ]);
 
-const Header = ({ title = "" }) => {
+const Header: FC<{ title: string }> = ({ title = "" }) => {
   const [toggle, setToggle] = useState(false);
   const words = title.split(" ");
 

@@ -17,7 +17,8 @@ module.exports = {
   },
   env: {
     SUBGRAPH_AZRAEL_URL: process.env.SUBGRAPH_AZRAEL_URL,
-    DEFAULT_IMAGE_FALLBACK: process.env.DEFAULT_IMAGE_FALLBACK
+    DEFAULT_IMAGE_FALLBACK: process.env.DEFAULT_IMAGE_FALLBACK,
+    API_GRAPH_PROTOCOL_URL: process.env.API_GRAPH_PROTOCOL_URL,
   },
   images: {
     domains: [
