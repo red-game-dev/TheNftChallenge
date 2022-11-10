@@ -25,3 +25,7 @@ pnpm create next-app --example with-tailwindcss with-tailwindcss-app
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+## Mint your first NFT
+
+<https://docs.alchemy.com/docs/how-to-develop-an-nft-smart-contract-erc721-with-alchemy>
