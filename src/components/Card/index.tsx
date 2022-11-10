@@ -1,10 +1,12 @@
+import { useState } from "react";
+
 import tw, { styled } from "twin.macro";
 
 import Image from "next/image";
 import Link from "next/link";
 
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { NftAssetType, ReadableNftItem } from "@/types/nft";
+import { ReadableNftItem } from "@/types/nft";
 
 interface NftButtonArgs {
   claimed?: boolean;
@@ -24,10 +26,6 @@ const NftCardBackground = styled.div(() => [
 
 const NftImage = styled(Image)(() => [
   tw`w-full rounded-md border-b-[0.01rem] border-t-[0.01rem] border-[#4bffa5]`
-]);
-
-const NftVideo = styled.video(() => [
-  tw``
 ]);
 
 const NftContent = styled.div(() => [
@@ -65,7 +63,7 @@ interface NftCardProps extends ReadableNftItem {
 export const NFT = ({
   id, title, description,
   nftPrice, paymentTokenName,
-  collateralClaimed = false, assetType,
+  collateralClaimed = false,
   dailyRentPrice,
   nftAddress, tokenId,
   assetUrl, rawMetadata = {},
@@ -73,28 +71,21 @@ export const NFT = ({
     const [isFavourite, setFavourite] = useLocalStorage<any>(`favouriteStatus-${id}`,
     JSON.parse(window.localStorage.getItem(`favouriteStatus-${id}`) || "false") as boolean);
 
+    const [imgSrc, setImageSrc] = useState<string>(assetUrl || process.env.DEFAULT_IMAGE_FALLBACK || "");
+
     return (
       <NftCard>
         <NftCardBackground>
-          { assetUrl && assetType === NftAssetType.IMAGE &&
-            <NftImage
-              style={{
-                background: rawMetadata.background_color || "black"
-              }}
-              src={assetUrl || ""}
-              width={200}
-              height={200}
-              alt="image"
-            />
-          }
-          {
-            assetUrl && assetType === NftAssetType.VIDEO &&
-            <NftVideo>
-              <source
-                src={assetUrl || ""}
-              />
-            </NftVideo>
-          }
+          <NftImage
+            style={{
+              background: rawMetadata.background_color || "black"
+            }}
+            src={imgSrc}
+            width={200}
+            height={200}
+            alt="image"
+            onError={() => setImageSrc(process.env.DEFAULT_IMAGE_FALLBACK || "")}
+          />
           <NftContent>
             <NftTitle>
               <span>

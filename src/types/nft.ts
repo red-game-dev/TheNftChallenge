@@ -1,11 +1,5 @@
 import { Nft } from "alchemy-sdk";
 
-export enum NftAssetType {
-  IMAGE = "image",
-  VIDEO = "video",
-  AUDIO = "AUDIO"
-}
-
 export interface Lending {
   id: string;
   collateralClaimed: boolean;
@@ -40,7 +34,6 @@ export type ReadableNftItem = Omit<Lending, "nftPrice" | "dailyRentPrice"> & {
   dailyRentPrice: number;
   paymentTokenName: string;
   assetUrl: string;
-  assetType: NftAssetType;
 } & Nft & {
   renting?: Omit<Renting, "lending">;
 };
