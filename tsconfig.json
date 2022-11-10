@@ -2,7 +2,8 @@
   "extends": "@graphprotocol/graph-ts/types/tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es5",
+    "target": "ES6",
+    "noLib": false,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,6 +16,12 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "types": ["./src/types"],
     "paths": {
       "@/pages/*": [
         "src/pages/*"
@@ -33,8 +40,17 @@
       ],
       "@/utils/*": [
         "src/utils/*"
+      ],
+      "@/setups/*": [
+        "src/setups/*"
+      ],
+      "@/queries/*": [
+        "src/queries/*"
+      ],
+      "@/types/*": [
+        "src/types/*"
       ]
-    },
+    }
   },
   "include": [
     "next-env.d.ts",
