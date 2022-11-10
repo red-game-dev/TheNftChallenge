@@ -61,7 +61,7 @@ export const Menu = ({ active }: MenuArgs) => (
     <MenuButton active={active} className="menu-btn" />
     <MenuContainer active={active}>
       <MenuList>
-          <MenuItem href="#section-started" selected={true}>
+          <MenuItem href="/" selected={true}>
             Home
           </MenuItem>
       </MenuList>
