@@ -40,7 +40,7 @@ const LogoContainer = styled.div(() => [
       }
       
       strong {
-        color: #fff;
+        color: #4bffa5;
       }
     }
   `
