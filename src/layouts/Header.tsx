@@ -8,6 +8,7 @@ import { Menu } from "@/components/Menu";
 
 const HeaderContainer = styled.header(() => [
   tw`
+    bg-[#121212f2] lg:bg-[transparent]
     flex items-center justify-between m-0 lg:m-auto py-0 px-[20px] fixed lg:p-[50px] pt-0 left-0 right-0 w-full z-50
     after:content-[''] after:relative after:block after:clear-both
   `,
@@ -19,7 +20,7 @@ const HeaderContainer = styled.header(() => [
 const HeaderContent = tw.div`w-full relative`;
 
 const LogoContainer = styled.div(() => [
-  tw`relative overflow-hidden top-0 w-[150px] text-base leading-loose font-semibold text-white opacity-50 whitespace-nowrap z-50 lg:top-12`,
+  tw`w-full m-4 relative overflow-hidden lg:w-[150px] lg:m-0 text-base leading-loose font-semibold text-white opacity-50 whitespace-nowrap z-50 lg:top-12`,
   css`
     .mask-lnk {
       position: relative;
