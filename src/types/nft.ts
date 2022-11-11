@@ -1,9 +1,11 @@
-import { Nft } from "alchemy-sdk";
+import { Nft, NftTokenType as NftTokenTypeAclhemy } from "alchemy-sdk";
 
 export const enum NftEntityType {
   LENDING = "lending",
   RENTING = "renting"
 }
+
+export const NftTokenType = NftTokenTypeAclhemy;
 
 export interface Lending {
   __typename?: "Lending";
@@ -19,7 +21,7 @@ export interface Lending {
   lentAt: string;
   nftAddress: string;
   nftPrice: string;
-  paymentToken: number;
+  paymentToken: string;
   tokenId: string;
 }
 
@@ -43,6 +45,6 @@ export type ReadableNftItem = Omit<Lending, "nftPrice" | "dailyRentPrice"> & {
   dailyRentPrice: number;
   paymentTokenName: string;
   assetUrl: string;
-} & Nft & {
+} & Partial<Nft> & {
   renting?: Omit<Renting, "lending">;
 };

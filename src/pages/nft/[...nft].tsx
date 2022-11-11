@@ -7,10 +7,10 @@ import { AppProps } from "next/app";
 
 import { getAzrealRawNfts } from "@/api/getAzrealRawNfts";
 import { AttributeList } from "@/components/Attributes";
-import { NFT as NftCard } from "@/components/Card";
 import { Container, Content } from "@/components/Container";
 import { ErrorDetail } from "@/components/Error";
 import { Loader } from "@/components/Loader";
+import { NFT as NftCard } from "@/components/NftCard";
 import { TagsList } from "@/components/Tags";
 import { Title } from "@/components/Title";
 import { useGetNfts } from "@/hooks/nfts/useGetNfts";
@@ -79,7 +79,7 @@ export default function Nft({ nftAddress, tokenId }: NftPageProps) {
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
 
-  const [nftAddress, tokenId] = query?.nft || [];
+  const [nftAddress, tokenId] = query?.nft as string[] || [] as string[];
 
   if (nftAddress && tokenId) {
     queryClient.prefetchQuery([`nft-${nftAddress}-${tokenId}`], () => getAzrealRawNfts<AzrealNFTS>(nftAddress, tokenId, 1));

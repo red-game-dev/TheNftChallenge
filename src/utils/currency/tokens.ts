@@ -9,4 +9,4 @@ export const tokens = [
   "ACS",
 ];
 
-export const toPaymentToken = (paymentToken: number): string => tokens[paymentToken - 1] || "UNKNOWN";
+export const toPaymentToken = (paymentToken: number): string => tokens[Number(paymentToken) - 1] || "UNKNOWN";

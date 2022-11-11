@@ -11,7 +11,7 @@ export const getFullNftDetails = async (nft: Lending, renting?: Omit<Renting, "l
     assetUrl,
     nftPrice: parseInt(nft.nftPrice || "", 16),
     dailyRentPrice: parseInt(nft.dailyRentPrice || "", 16),
-    paymentTokenName: toPaymentToken(nft.paymentToken || -1),
+    paymentTokenName: toPaymentToken(Number(nft.paymentToken || -1)),
     ...nftMetaData,
     title: nftMetaData?.title || "Oh was not set",
     description: nftMetaData?.description || "Not specified",
