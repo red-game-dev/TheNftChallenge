@@ -7,19 +7,20 @@ import { QueryData } from "@/types/query";
 import { getFullNftDetails } from "@/utils/nft/nftDetails";
 
 interface UseGetNftsHookProps {
+  key: string;
   nftAddress?: string;
   tokenId?: string;
   limit?: number;
 }
 
-export const useGetNfts = ({ nftAddress, tokenId, limit }: UseGetNftsHookProps) => {
+export const useGetNfts = ({ nftAddress, tokenId, limit, key }: UseGetNftsHookProps) => {
   const { data: nftsData = {} as QueryData<AzrealNFTS>, error, isLoading } =
-  useQuery<any, any, QueryData<AzrealNFTS>>(["nfts"], () => getAzrealRawNfts<AzrealNFTS>(nftAddress, tokenId, limit));
+  useQuery<any, any, QueryData<AzrealNFTS>>([`${key}-list`], () => getAzrealRawNfts<AzrealNFTS>(nftAddress, tokenId, limit));
   const { data: { lendings = [] as Lending[], rentings = [] as Renting[] } = {} as AzrealNFTS} = nftsData || {} as QueryData<AzrealNFTS>;
   const list = [...lendings, ...rentings];
 
   const { data: nfts = [], error: lendingNftsError, isLoading: isLoadingNfts } =
-    useQuery<any, any, ReadableNftItem[]>(["nftsLendings"],
+    useQuery<any, any, ReadableNftItem[]>([`${key}-lendings`],
     () => Promise.all(list.map(({ __typename, ...nft }: Lending | Renting) => {
       if (__typename === "Renting") {
         const { lending, ...renting } = nft as Renting;
