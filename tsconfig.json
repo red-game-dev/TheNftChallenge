@@ -21,7 +21,14 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": ["./src/types"],
+    "typeRoots": [
+      "./src/types", 
+      "node_modules/@types"
+    ],
+    "types": [
+      "jest", 
+      "node"
+    ],
     "paths": {
       "@/pages/*": [
         "src/pages/*"
@@ -52,6 +59,9 @@
       ],
       "@/api/*": [
         "src/api/*"
+      ],
+      "@/tests/*": [
+        "tests/*"
       ]
     }
   },
@@ -62,6 +72,7 @@
     "src"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "test"
   ]
 }

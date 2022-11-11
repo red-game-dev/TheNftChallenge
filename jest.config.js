@@ -7,6 +7,10 @@ const { compilerOptions } = require("./tsconfig.json");
 
 const paths = compilerOptions.paths ? compilerOptions.paths : {};
 
+require('dotenv').config({
+  path: '.env.test'
+});
+
 // Providing the path to your Next.js app which will enable loading next.config.js and .env files
 const createJestConfig = nextJest({ dir: './' })
 
@@ -15,7 +19,9 @@ const customJestConfig = {
   preset: 'ts-jest',
   testRegex: '(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|js?|tsx?|ts?)$',
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
+    // Use babel-jest to transpile tests with the next/babel preset
+    // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
   },
   collectCoverage: true,
   // on node 14.x coverage provider v8 offers good speed and more or less good report
@@ -41,7 +47,11 @@ const customJestConfig = {
       ...pathsToModuleNameMapper(paths, { prefix: "<rootDir>/" }),
       "\\.(scss|sass|css)$": "identity-obj-proxy",
       '\\.(jpg|jpeg|png|gif|svg)$': ['<rootDir>/tests/__mocks__/fileMock.js'],
+      "alchemy-sdk": '<rootDir>/tests/__mocks__/alchemy-sdk.js',
+      "styled-components": "identity-obj-proxy",
+      "twin.macro": "identity-obj-proxy",
   },
+  globals: process.env,
   moduleDirectories: ['node_modules', '<rootDir>/'],
   setupFilesAfterEnv: ['<rootDir>/tests/setups/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',

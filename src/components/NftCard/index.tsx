@@ -32,9 +32,13 @@ const NftContent = styled.div(() => [
   tw`bg-[#4bffa5] p-8 sm:p-9 md:p-7 xl:p-9 text-center rounded-md`
 ]);
 
-const NftTitle = tw.h3`font-semibold text-gray-800 text-xl mb-4 block hover:text-gray-900`;
+const NftTitle = styled.h3(() => [
+  tw`font-semibold text-gray-800 text-xl mb-4 block hover:text-gray-900`
+]);
 
-const NftParagraph = tw.p`text-xs text-black leading-relaxed mb-7`;
+const NftParagraph = styled.div(() => [
+  tw`text-xs text-black leading-relaxed mb-7`
+]);
 
 const NftButton = styled.div(({ claimed = false }: NftButtonArgs) => [
   tw`w-full inline-block py-2 px-7 border border-[#E5E7EB] bg-black rounded-md text-base text-white
