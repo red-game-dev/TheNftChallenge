@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useMemo } from "react";
 
 import tw, { css, styled } from "twin.macro";
 
@@ -61,7 +61,7 @@ const LogoContents = styled.div(() => [
 
 const Header: FC<{ title: string }> = ({ title = "" }) => {
   const [toggle, setToggle] = useState(false);
-  const words = title.split(" ");
+  const words = useMemo(() => title.split(" "), [title]);
 
   return (
     <HeaderContainer className={"header desktopHeader"}

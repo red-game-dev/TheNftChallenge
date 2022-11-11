@@ -28,7 +28,8 @@ export default function Nft({ nftAddress, tokenId }: NftPageProps) {
   const { lendings, error, isLoading } = useGetNfts({
     nftAddress,
     tokenId,
-    limit: 5
+    limit: 5,
+    key: "nft"
   });
 
   const [nft = {} as ReadableNftItem] =  lendings;
