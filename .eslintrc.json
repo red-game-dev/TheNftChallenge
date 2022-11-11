@@ -192,6 +192,7 @@
     "prefer-const": "error",
     "quote-props": ["error", "consistent-as-needed"],
     "radix": "error",
+    "import/no-cycle": "error",
     "space-before-function-paren": [
       "error",
       {
