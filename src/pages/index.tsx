@@ -20,7 +20,7 @@ const NftList = styled.ul(() => [
 
 export default function Home() {
   const { rentings, lendings, error, isLoading } = useGetNfts({
-    limit: 20,
+    limit: 5,
     key: "nfts"
   });
 
