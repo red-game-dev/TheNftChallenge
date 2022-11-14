@@ -1,6 +1,5 @@
 module.exports = {
   presets: [
-    ['next/babel', { 'preset-react': { runtime: 'automatic' } }], 
     [
       "@babel/preset-env",
       {
@@ -9,6 +8,7 @@ module.exports = {
         }
       }
     ],
+    ['next/babel', { 'preset-react': { runtime: 'automatic' } }], 
   ],
   plugins: [
     'babel-plugin-macros',

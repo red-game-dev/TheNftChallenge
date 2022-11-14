@@ -16,6 +16,7 @@ const createJestConfig = nextJest({ dir: './' })
 
 // Any custom config you want to pass to Jest
 const customJestConfig = {
+  verbose: true,
   preset: 'ts-jest',
   testRegex: '(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|js?|tsx?|ts?)$',
   transform: {
@@ -48,8 +49,6 @@ const customJestConfig = {
       "\\.(scss|sass|css)$": "identity-obj-proxy",
       '\\.(jpg|jpeg|png|gif|svg)$': ['<rootDir>/tests/__mocks__/fileMock.js'],
       "alchemy-sdk": '<rootDir>/tests/__mocks__/alchemy-sdk.js',
-      "styled-components": "identity-obj-proxy",
-      "twin.macro": "identity-obj-proxy",
   },
   globals: process.env,
   moduleDirectories: ['node_modules', '<rootDir>/'],
