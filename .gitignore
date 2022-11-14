@@ -44,3 +44,5 @@ node_modules
 generated/*
 
 tests/*.latest.json
+cache
+.swc
