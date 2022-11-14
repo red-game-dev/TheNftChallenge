@@ -4,15 +4,15 @@ import tw, { css, styled } from "twin.macro";
 
 import Link from "next/link";
 
-interface MenuArgs {
+interface MenuProps {
   active?: boolean;
 }
 
-interface MenuItemArgs {
+interface MenuItemProps {
   selected?: boolean;
 }
 
-const MenuContainer = styled.div(({ active = false }: MenuArgs) => [
+const MenuContainer = styled.div(({ active = false }: MenuProps) => [
   tw`
   flex-col justify-evenly
   text-center lg:text-right 
@@ -32,7 +32,7 @@ const MenuContainer = styled.div(({ active = false }: MenuArgs) => [
   `
 ]);
 
-const MenuButton = styled.div(({ active = false }: MenuArgs) => [
+const MenuButton = styled.div(({ active = false }: MenuProps) => [
   tw`m-4 w-[30px] h-[20px] top-2 right-0 absolute lg:invisible transition-[all 0.3s ease 0s] rotate-0`,
   tw`before:content-['']
     after:content-['']
@@ -62,7 +62,7 @@ const MenuList = styled.ul(() => [
   `
 ]);
 
-const MenuItem = styled(Link)(({ selected = false }: MenuItemArgs) => [
+const MenuItem = styled(Link)(({ selected = false }: MenuItemProps) => [
   tw`w-full lg:w-auto m-4 p-4 py-8 lg:p-0 lg:m-0 inline text-base leading-loose text-white font-semibold 
      lg:bg-[#121212ed] lg:px-4 border-dotted border-2 border-[#121212ed] border-r-[#4bffa5]
      opacity-50 relative align-top overflow-hidden hover:text-white hover:opacity-100`,
@@ -72,7 +72,7 @@ const MenuItem = styled(Link)(({ selected = false }: MenuItemArgs) => [
   `
 ]);
 
-export const Menu: FC<MenuArgs> = ({ active }: MenuArgs) => (
+export const Menu: FC<MenuProps> = ({ active }: MenuProps) => (
   <>
     <MenuButton active={active} className="menu-btn" />
     <MenuContainer active={active}>

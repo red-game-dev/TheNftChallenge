@@ -10,7 +10,7 @@ import { AttributeList } from "@/components/Attributes";
 import { Container, Content } from "@/components/Container";
 import { ErrorDetail } from "@/components/Error";
 import { Loader } from "@/components/Loader";
-import { NFT as NftCard } from "@/components/NftCard";
+import { NftCard } from "@/components/NftCard";
 import { TagsList } from "@/components/Tags";
 import { Title } from "@/components/Title";
 import { useGetNfts } from "@/hooks/nfts/useGetNfts";
