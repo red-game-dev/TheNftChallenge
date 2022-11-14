@@ -11,7 +11,7 @@ The project is built using the following
 - Styled components (twin.macro)
 - Alchemy for the NFTs provider
 - The graph protocol to query data from specific blockchain
-- Grapql
+- Graphql
 
 ## Could have been better?
 
