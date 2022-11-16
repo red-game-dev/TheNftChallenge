@@ -13,6 +13,15 @@ The project is built using the following
 - The graph protocol to query data from specific blockchain
 - Graphql
 
+## Usage
+
+- Create your env from .example, make sure to fill the private key part. As it is requested for Graph protocol
+- `npm install`
+- `npm run dev`
+
+Note: Please be sure to make `.env`, `.env.test` and `.env.local` before proceed to `npm run dev`.
+
+
 ## Could have been better?
 
 Yes, there are various of improvements that can be introduced
