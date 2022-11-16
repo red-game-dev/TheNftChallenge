@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
-    "test": "jest --watch",
+    "test": "jest --watchAll",
     "compile:smartContract": "npx hardhat compile",
     "deploy:smartContract": "npx hardhat run scripts/deploy.js --network goerli",
     "fix:links": "npx @next/codemod new-link .",
