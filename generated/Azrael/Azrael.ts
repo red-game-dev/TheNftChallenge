@@ -23,11 +23,11 @@ export class AzraelCollateralClaimed__Params {
     this._event = event;
   }
 
-  get lendingId(): bigint {
+  get lendingId(): BigInt {
     return this._event.parameters[0].value.toBigInt();
   }
 
-  get claimedAt(): bigint {
+  get claimedAt(): BigInt {
     return this._event.parameters[1].value.toBigInt();
   }
 }
@@ -45,11 +45,11 @@ export class AzraelLendingStopped__Params {
     this._event = event;
   }
 
-  get lendingId(): bigint {
+  get lendingId(): BigInt {
     return this._event.parameters[0].value.toBigInt();
   }
 
-  get stoppedAt(): bigint {
+  get stoppedAt(): BigInt {
     return this._event.parameters[1].value.toBigInt();
   }
 }
@@ -71,7 +71,7 @@ export class AzraelLent__Params {
     return this._event.parameters[0].value.toAddress();
   }
 
-  get tokenId(): bigint {
+  get tokenId(): BigInt {
     return this._event.parameters[1].value.toBigInt();
   }
 
@@ -79,7 +79,7 @@ export class AzraelLent__Params {
     return this._event.parameters[2].value.toI32();
   }
 
-  get lendingId(): bigint {
+  get lendingId(): BigInt {
     return this._event.parameters[3].value.toBigInt();
   }
 
@@ -121,7 +121,7 @@ export class AzraelRented__Params {
     this._event = event;
   }
 
-  get lendingId(): bigint {
+  get lendingId(): BigInt {
     return this._event.parameters[0].value.toBigInt();
   }
 
@@ -133,7 +133,7 @@ export class AzraelRented__Params {
     return this._event.parameters[2].value.toI32();
   }
 
-  get rentedAt(): bigint {
+  get rentedAt(): BigInt {
     return this._event.parameters[3].value.toBigInt();
   }
 }
@@ -151,11 +151,11 @@ export class AzraelReturned__Params {
     this._event = event;
   }
 
-  get lendingId(): bigint {
+  get lendingId(): BigInt {
     return this._event.parameters[0].value.toBigInt();
   }
 
-  get returnedAt(): bigint {
+  get returnedAt(): BigInt {
     return this._event.parameters[1].value.toBigInt();
   }
 }
@@ -168,11 +168,11 @@ export class Azrael extends ethereum.SmartContract {
   onERC1155BatchReceived(
     param0: Address,
     param1: Address,
-    param2: bigint[],
-    param3: bigint[],
+    param2: Array<BigInt>,
+    param3: Array<BigInt>,
     param4: Bytes
   ): Bytes {
-    const result = super.call(
+    let result = super.call(
       "onERC1155BatchReceived",
       "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes):(bytes4)",
       [
@@ -190,11 +190,11 @@ export class Azrael extends ethereum.SmartContract {
   try_onERC1155BatchReceived(
     param0: Address,
     param1: Address,
-    param2: bigint[],
-    param3: bigint[],
+    param2: Array<BigInt>,
+    param3: Array<BigInt>,
     param4: Bytes
   ): ethereum.CallResult<Bytes> {
-    const result = super.tryCall(
+    let result = super.tryCall(
       "onERC1155BatchReceived",
       "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes):(bytes4)",
       [
@@ -205,24 +205,21 @@ export class Azrael extends ethereum.SmartContract {
         ethereum.Value.fromBytes(param4)
       ]
     );
-
     if (result.reverted) {
       return new ethereum.CallResult();
     }
-    const value = result.value;
-
-
-return ethereum.CallResult.fromValue(value[0].toBytes());
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBytes());
   }
 
   onERC1155Received(
     param0: Address,
     param1: Address,
-    param2: bigint,
-    param3: bigint,
+    param2: BigInt,
+    param3: BigInt,
     param4: Bytes
   ): Bytes {
-    const result = super.call(
+    let result = super.call(
       "onERC1155Received",
       "onERC1155Received(address,address,uint256,uint256,bytes):(bytes4)",
       [
@@ -240,11 +237,11 @@ return ethereum.CallResult.fromValue(value[0].toBytes());
   try_onERC1155Received(
     param0: Address,
     param1: Address,
-    param2: bigint,
-    param3: bigint,
+    param2: BigInt,
+    param3: BigInt,
     param4: Bytes
   ): ethereum.CallResult<Bytes> {
-    const result = super.tryCall(
+    let result = super.tryCall(
       "onERC1155Received",
       "onERC1155Received(address,address,uint256,uint256,bytes):(bytes4)",
       [
@@ -255,23 +252,20 @@ return ethereum.CallResult.fromValue(value[0].toBytes());
         ethereum.Value.fromBytes(param4)
       ]
     );
-
     if (result.reverted) {
       return new ethereum.CallResult();
     }
-    const value = result.value;
-
-
-return ethereum.CallResult.fromValue(value[0].toBytes());
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBytes());
   }
 
   onERC721Received(
     param0: Address,
     param1: Address,
-    param2: bigint,
+    param2: BigInt,
     param3: Bytes
   ): Bytes {
-    const result = super.call(
+    let result = super.call(
       "onERC721Received",
       "onERC721Received(address,address,uint256,bytes):(bytes4)",
       [
@@ -288,10 +282,10 @@ return ethereum.CallResult.fromValue(value[0].toBytes());
   try_onERC721Received(
     param0: Address,
     param1: Address,
-    param2: bigint,
+    param2: BigInt,
     param3: Bytes
   ): ethereum.CallResult<Bytes> {
-    const result = super.tryCall(
+    let result = super.tryCall(
       "onERC721Received",
       "onERC721Received(address,address,uint256,bytes):(bytes4)",
       [
@@ -301,54 +295,45 @@ return ethereum.CallResult.fromValue(value[0].toBytes());
         ethereum.Value.fromBytes(param3)
       ]
     );
-
     if (result.reverted) {
       return new ethereum.CallResult();
     }
-    const value = result.value;
-
-
-return ethereum.CallResult.fromValue(value[0].toBytes());
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBytes());
   }
 
   paused(): boolean {
-    const result = super.call("paused", "paused():(bool)", []);
+    let result = super.call("paused", "paused():(bool)", []);
 
     return result[0].toBoolean();
   }
 
   try_paused(): ethereum.CallResult<boolean> {
-    const result = super.tryCall("paused", "paused():(bool)", []);
-
+    let result = super.tryCall("paused", "paused():(bool)", []);
     if (result.reverted) {
       return new ethereum.CallResult();
     }
-    const value = result.value;
-
-
-return ethereum.CallResult.fromValue(value[0].toBoolean());
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBoolean());
   }
 
-  rentFee(): bigint {
-    const result = super.call("rentFee", "rentFee():(uint256)", []);
+  rentFee(): BigInt {
+    let result = super.call("rentFee", "rentFee():(uint256)", []);
 
     return result[0].toBigInt();
   }
 
-  try_rentFee(): ethereum.CallResult<bigint> {
-    const result = super.tryCall("rentFee", "rentFee():(uint256)", []);
-
+  try_rentFee(): ethereum.CallResult<BigInt> {
+    let result = super.tryCall("rentFee", "rentFee():(uint256)", []);
     if (result.reverted) {
       return new ethereum.CallResult();
     }
-    const value = result.value;
-
-
-return ethereum.CallResult.fromValue(value[0].toBigInt());
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
   supportsInterface(interfaceId: Bytes): boolean {
-    const result = super.call(
+    let result = super.call(
       "supportsInterface",
       "supportsInterface(bytes4):(bool)",
       [ethereum.Value.fromFixedBytes(interfaceId)]
@@ -358,19 +343,16 @@ return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
   try_supportsInterface(interfaceId: Bytes): ethereum.CallResult<boolean> {
-    const result = super.tryCall(
+    let result = super.tryCall(
       "supportsInterface",
       "supportsInterface(bytes4):(bool)",
       [ethereum.Value.fromFixedBytes(interfaceId)]
     );
-
     if (result.reverted) {
       return new ethereum.CallResult();
     }
-    const value = result.value;
-
-
-return ethereum.CallResult.fromValue(value[0].toBoolean());
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBoolean());
   }
 }
 
@@ -429,15 +411,15 @@ export class ClaimCollateralCall__Inputs {
     this._call = call;
   }
 
-  get _nfts(): Address[] {
+  get _nfts(): Array<Address> {
     return this._call.inputValues[0].value.toAddressArray();
   }
 
-  get _tokenIds(): bigint[] {
+  get _tokenIds(): Array<BigInt> {
     return this._call.inputValues[1].value.toBigIntArray();
   }
 
-  get _lendingIds(): bigint[] {
+  get _lendingIds(): Array<BigInt> {
     return this._call.inputValues[2].value.toBigIntArray();
   }
 }
@@ -467,31 +449,31 @@ export class LendCall__Inputs {
     this._call = call;
   }
 
-  get _nfts(): Address[] {
+  get _nfts(): Array<Address> {
     return this._call.inputValues[0].value.toAddressArray();
   }
 
-  get _tokenIds(): bigint[] {
+  get _tokenIds(): Array<BigInt> {
     return this._call.inputValues[1].value.toBigIntArray();
   }
 
-  get _lendAmounts(): bigint[] {
+  get _lendAmounts(): Array<BigInt> {
     return this._call.inputValues[2].value.toBigIntArray();
   }
 
-  get _maxRentDurations(): i32[] {
+  get _maxRentDurations(): Array<i32> {
     return this._call.inputValues[3].value.toI32Array();
   }
 
-  get _dailyRentPrices(): Bytes[] {
+  get _dailyRentPrices(): Array<Bytes> {
     return this._call.inputValues[4].value.toBytesArray();
   }
 
-  get _nftPrices(): Bytes[] {
+  get _nftPrices(): Array<Bytes> {
     return this._call.inputValues[5].value.toBytesArray();
   }
 
-  get _paymentTokens(): i32[] {
+  get _paymentTokens(): Array<i32> {
     return this._call.inputValues[6].value.toI32Array();
   }
 }
@@ -529,11 +511,11 @@ export class OnERC1155BatchReceivedCall__Inputs {
     return this._call.inputValues[1].value.toAddress();
   }
 
-  get value2(): bigint[] {
+  get value2(): Array<BigInt> {
     return this._call.inputValues[2].value.toBigIntArray();
   }
 
-  get value3(): bigint[] {
+  get value3(): Array<BigInt> {
     return this._call.inputValues[3].value.toBigIntArray();
   }
 
@@ -579,11 +561,11 @@ export class OnERC1155ReceivedCall__Inputs {
     return this._call.inputValues[1].value.toAddress();
   }
 
-  get value2(): bigint {
+  get value2(): BigInt {
     return this._call.inputValues[2].value.toBigInt();
   }
 
-  get value3(): bigint {
+  get value3(): BigInt {
     return this._call.inputValues[3].value.toBigInt();
   }
 
@@ -629,7 +611,7 @@ export class OnERC721ReceivedCall__Inputs {
     return this._call.inputValues[1].value.toAddress();
   }
 
-  get value2(): bigint {
+  get value2(): BigInt {
     return this._call.inputValues[2].value.toBigInt();
   }
 
@@ -667,19 +649,19 @@ export class RentCall__Inputs {
     this._call = call;
   }
 
-  get _nfts(): Address[] {
+  get _nfts(): Array<Address> {
     return this._call.inputValues[0].value.toAddressArray();
   }
 
-  get _tokenIds(): bigint[] {
+  get _tokenIds(): Array<BigInt> {
     return this._call.inputValues[1].value.toBigIntArray();
   }
 
-  get _lendingIds(): bigint[] {
+  get _lendingIds(): Array<BigInt> {
     return this._call.inputValues[2].value.toBigIntArray();
   }
 
-  get _rentDurations(): i32[] {
+  get _rentDurations(): Array<i32> {
     return this._call.inputValues[3].value.toI32Array();
   }
 }
@@ -709,15 +691,15 @@ export class ReturnItCall__Inputs {
     this._call = call;
   }
 
-  get _nfts(): Address[] {
+  get _nfts(): Array<Address> {
     return this._call.inputValues[0].value.toAddressArray();
   }
 
-  get _tokenIds(): bigint[] {
+  get _tokenIds(): Array<BigInt> {
     return this._call.inputValues[1].value.toBigIntArray();
   }
 
-  get _lendingIds(): bigint[] {
+  get _lendingIds(): Array<BigInt> {
     return this._call.inputValues[2].value.toBigIntArray();
   }
 }
@@ -807,7 +789,7 @@ export class SetRentFeeCall__Inputs {
     this._call = call;
   }
 
-  get _rentFee(): bigint {
+  get _rentFee(): BigInt {
     return this._call.inputValues[0].value.toBigInt();
   }
 }
@@ -837,15 +819,15 @@ export class StopLendingCall__Inputs {
     this._call = call;
   }
 
-  get _nfts(): Address[] {
+  get _nfts(): Array<Address> {
     return this._call.inputValues[0].value.toAddressArray();
   }
 
-  get _tokenIds(): bigint[] {
+  get _tokenIds(): Array<BigInt> {
     return this._call.inputValues[1].value.toBigIntArray();
   }
 
-  get _lendingIds(): bigint[] {
+  get _lendingIds(): Array<BigInt> {
     return this._call.inputValues[2].value.toBigIntArray();
   }
 }
