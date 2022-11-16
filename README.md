@@ -15,7 +15,7 @@ The project is built using the following
 
 ## Usage
 
-- Create your env from .example, make sure to fill the private key part. As it is requested for Graph protocol
+- Create your env from .example. (You dont need to put the private key, it is only to create smart contract with hardhat.config.)
 - `npm install`
 - `npm run dev`
 
